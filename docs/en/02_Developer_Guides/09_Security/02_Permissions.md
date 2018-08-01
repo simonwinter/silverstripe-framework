@@ -51,6 +51,26 @@ This can then be used to add a dropdown for permission codes to the security pan
 a helper method that will call `providePermissions()` on every applicable class, and collate the resuls into a single
 dropdown.
 
+### Additional Permission Properties
+
+By default the `providePermissions` method returns a mapping of `code` to `permission title`. Additionally, each entry to the map can contain:
+
+```php
+...
+public function providePermissions()
+{
+    return [
+        'VIEW_SITE' => [
+            'name' => _t('VIEWSITE', 'Access to the site'),
+            'category' => _t('SilverStripe\\Security\\Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
+            'help' => _t('VIEWSITEHELP', 'Allows access to the site'),
+            'sort' => 0
+        ]
+    ]
+}
+...
+```
+
 ## Default use
 
 By default, permissions are used in the following way:
